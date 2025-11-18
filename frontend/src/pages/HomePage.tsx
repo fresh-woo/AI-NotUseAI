@@ -21,13 +21,13 @@ export const HomePage: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-white pb-20 flex flex-col">
-      <header className="px-5 pt-8 pb-10 bg-gradient-to-b from-gray-900 to-gray-800 text-white rounded-b-[32px] shadow-md">
+    <div className="min-h-screen bg-white pb-20 flex flex-col font-pretendard">
+      <header className="px-5 pt-8 pb-10 bg-gradient-to-b from-gray-900 to-gray-800 text-white rounded-b-[30px] shadow-md">
         <div className="flex flex-col sm:flex-row items-start sm:items-end justify-between gap-4">
-          <h1 className="text-3xl font-bold leading-snug">
-            오늘의 호기심을
+          <h1 className="text-3xl font-bold leading-snug font-sans-serif">
+            AI를 사용하지 않고
             <br />
-            선호 주제와 함께 채워보세요.
+            자신의 생각을 늘려봐요.
           </h1>
           <p className="text-sm uppercase text-gray-400 sm:text-right ">
             상우 선희 규범 승식 웨린 더파
@@ -37,10 +37,11 @@ export const HomePage: React.FC = () => {
           관심 주제를 고르고 목표를 설정하면, 검색 기록을 기반으로 포인트를 모아
           상점에서 사용할 수 있어요.
         </p>
+
         <div className="flex flex-col sm:flex-row gap-3">
           <button
             onClick={() => navigate("/topics/select")}
-            className="w-full sm:w-auto px-6 py-3 bg-white text-gray-900 rounded-2xl font-semibold shadow-lg hover:shadow-xl transition-shadow"
+            className="w-full sm:w-auto px-6 py-3 bg-white text-gray-900 rounded-2xl font-semibold shadow-lg hover:bg-gray-700 hover:text-white transition-shadow"
           >
             선호 주제 고르기
           </button>

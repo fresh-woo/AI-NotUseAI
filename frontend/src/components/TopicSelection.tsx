@@ -13,9 +13,7 @@ interface TopicSelectionProps {
   onOpenSidebar: () => void;
 }
 
-const isUserCreatedTopic = (
-  topic: Topic | UserTopic
-): topic is UserTopic => {
+const isUserCreatedTopic = (topic: Topic | UserTopic): topic is UserTopic => {
   return "isUserCreated" in topic;
 };
 
@@ -162,7 +160,7 @@ export const TopicSelection: React.FC<TopicSelectionProps> = ({
   return (
     <div className="min-h-screen bg-white flex flex-col relative">
       {/* Header */}
-      <div className="w-full px-4 pt-4 pb-2 flex-shrink-0">
+      <header className="w-full px-4 pt-4 pb-2 flex-shrink-0">
         <div className="flex items-center justify-between gap-4 mb-4">
           <button
             onClick={() => navigate("/")}
@@ -179,11 +177,7 @@ export const TopicSelection: React.FC<TopicSelectionProps> = ({
             ☰
           </button>
         </div>
-        {/* Progress Bar */}
-        <div className="w-full h-1 bg-gray-200 rounded-full overflow-hidden">
-          <div className="h-full bg-gray-800" style={{ width: "33%" }}></div>
-        </div>
-      </div>
+      </header>
 
       {/* Main Content - Scrollable */}
       <div className="flex-1 overflow-y-auto px-4 py-6">
@@ -204,7 +198,9 @@ export const TopicSelection: React.FC<TopicSelectionProps> = ({
                 order={selected?.order}
                 onClick={() => handleTopicClick(topic)}
                 onDelete={
-                  userCreated ? () => handleDeleteUserTopic(topic.id) : undefined
+                  userCreated
+                    ? () => handleDeleteUserTopic(topic.id)
+                    : undefined
                 }
               />
             );
@@ -379,7 +375,6 @@ export const TopicSelection: React.FC<TopicSelectionProps> = ({
           다음
         </button>
       </div>
-
     </div>
   );
 };
