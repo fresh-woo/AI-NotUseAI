@@ -29,25 +29,24 @@ export const TopicPage: React.FC<TopicPageProps> = ({
       <div className="px-4 py-6 space-y-6">
         <div className="flex items-center justify-between">
           <div>
-            <h1 className="text-2xl font-bold text-black mb-1">
-              내 주제 관리
-            </h1>
+            <h1 className="text-2xl font-bold text-black mb-1">내 주제 관리</h1>
             <p className="text-sm text-gray-500">
               관심 주제를 관리하고 바로 검색하거나 삭제할 수 있어요.
             </p>
           </div>
           <div className="flex gap-2">
             <button
-              onClick={onOpenSidebar}
-              className="px-4 py-2 rounded-xl border border-gray-300 text-sm font-semibold hover:bg-gray-50 transition-colors"
-            >
-              사이드바 열기
-            </button>
-            <button
               onClick={() => navigate("/topics/select")}
               className="px-4 py-2 rounded-xl bg-black text-white text-sm font-semibold hover:bg-gray-800 transition-colors"
             >
               주제 선택하러 가기
+            </button>
+            <button
+              onClick={onOpenSidebar}
+              className="text-gray-700 text-xl p-2 hover:bg-gray-100 rounded-lg transition-colors"
+              aria-label="메뉴"
+            >
+              ☰
             </button>
           </div>
         </div>
@@ -80,7 +79,7 @@ export const TopicPage: React.FC<TopicPageProps> = ({
                 <TopicCard
                   key={topic.id}
                   topic={topic}
-                  onClick={() => window.open(topic.link, "_blank")}
+                  onClick={() => navigate(`/topics/${topic.id}/manage`)}
                   onDelete={() => onDeleteUserTopic(topic.id)}
                 />
               ))}
@@ -91,4 +90,3 @@ export const TopicPage: React.FC<TopicPageProps> = ({
     </div>
   );
 };
-

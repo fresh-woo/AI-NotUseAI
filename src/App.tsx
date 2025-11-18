@@ -6,6 +6,7 @@ import { ShopPage } from "./pages/ShopPage";
 import { HomePage } from "./pages/HomePage";
 import { Sidebar } from "./components/Sidebar";
 import { TopicPage } from "./pages/TopicPage";
+import { TopicManagePage } from "./pages/TopicManagePage";
 import { UserTopic } from "./types/topic";
 
 const USER_TOPICS_KEY = "user_topics";
@@ -36,6 +37,12 @@ function App() {
     setUserTopics((prev) => prev.filter((topic) => topic.id !== id));
   };
 
+  const handleUpdateUserTopic = (id: string, updates: Partial<UserTopic>) => {
+    setUserTopics((prev) =>
+      prev.map((topic) => (topic.id === id ? { ...topic, ...updates } : topic))
+    );
+  };
+
   return (
     <BrowserRouter>
       <div className="App">
@@ -63,12 +70,21 @@ function App() {
             }
           />
           <Route path="/shop" element={<ShopPage />} />
+          <Route
+            path="/topics/:id/manage"
+            element={
+              <TopicManagePage
+                userTopics={userTopics}
+                onUpdateUserTopic={handleUpdateUserTopic}
+              />
+            }
+          />
         </Routes>
         <Navigation />
         <button
           onClick={() => setIsSidebarOpen(true)}
           aria-label="내 주제 사이드바 열기"
-          className="fixed bottom-24 right-4 z-40 flex items-center gap-2 px-4 py-3 rounded-2xl bg-black text-white shadow-lg hover:bg-gray-800 transition-colors"
+          className="bottom-24 right-4 z-40 flex items-center gap-2 px-4 py-3 rounded-2xl bg-black text-white shadow-lg hover:bg-gray-800 transition-colors"
         >
           <span className="text-lg">📂</span>
           <span className="text-sm font-semibold">내 주제</span>
@@ -85,4 +101,3 @@ function App() {
 }
 
 export default App;
-
