@@ -38,7 +38,7 @@ export const TopicManagePage: React.FC<TopicManagePageProps> = ({
 }) => {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
-  const { goals, addGoal, updateGoal, getGoal } = useGoals();
+  const { addGoal, updateGoal, getGoal } = useGoals();
   const { earnPoints } = usePoints();
 
   const topic = useMemo(

@@ -27,12 +27,6 @@ export const GoalCheckPage: React.FC = () => {
 
   const handleSubmit = () => {
     if (content.trim() && id) {
-      const check = addCheck({
-        goalId: id,
-        content: content.trim(),
-        rating,
-      });
-
       // 포인트 지급
       addCheckPoint(id, rating);
 
@@ -162,4 +156,3 @@ export const GoalCheckPage: React.FC = () => {
     </div>
   );
 };
-
