@@ -6,7 +6,7 @@ import { usePoints } from "../hooks/usePoints";
 export const GoalCheckPage: React.FC = () => {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
-  const { getGoal, addCheck, getChecksByGoal } = useGoals();
+  const { getGoal, getChecksByGoal } = useGoals();
   const { addCheckPoint } = usePoints();
 
   const [content, setContent] = useState("");
